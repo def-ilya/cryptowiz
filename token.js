@@ -50,19 +50,24 @@ class Token {
     }
 
     async dexScreener(network = "fantom", contract = "0xd2573a05aa5d9bbf65d5a4e610f1e4677c4b4d5b") {
-        const data = await axios.get(`https://io9.dexscreener.io/u/trading-history/recent/${network}/${contract}`)
-        return data['data'];
+        try {
+            const data = await axios.get(`https://io9.dexscreener.io/u/trading-history/recent/${network}/${contract}`)
+            return data['data'];
+        }
+        catch {
+            console.log("couldn't return Dex data.")
+        }
     }
 
-    async returnPairAddress(network = "fantom", contract = "0xd2573a05aa5d9bbf65d5a4e610f1e4677c4b4d5b") {
-        const data = await this.dexScreener(network, contract);
-        if (data == 'Internal Server Error') {
-            const pairSearch = await axios.get(`https://io4.dexscreener.io/u/search/pairs?q=${contract}`)
-            console.log(pairSearch['data'])
-            return pairSearch['data']['pairs'][0]["pairAddress"];
+    async returnPairs(query = "btc") {
+        try {
+            const pairSearch = await axios.get("https://io4.dexscreener.io/u/search/pairs?q=" + query)
+            return pairSearch['data']['pairs'];
         }
-        console.log("already a pair!")
-        return contract
+        catch {
+            console.log("couldn't return Pair data.")
+        }
+
     }
 
 }
