@@ -11,13 +11,24 @@ module.exports = {
 
         const id = interaction.options.getString('id');
 
-        const token = new Token(id);
-        await token.getDataById(id);
-        const requested = await token.currentPrice()
+        let network, pairAddress, tokenAddress, baseTokenSymbol, quoteTokenSymbol, tokenPrice;
 
-        console.log("called after getprice: " + requested)
-
-        await interaction.reply(`The current price of $${token.ticker.toUpperCase()} is: ${requested} USD`)
-
+        const token = new Token('btc');
+        try {
+            await token.returnPairs(id).then(res => {
+                console.log("Getting pairs")
+                network = res[0]['platformId']
+                pairAddress = res[0]['pairAddress']
+                tokenAddress = res[0]['baseToken']['address']
+                baseTokenSymbol = res[0]['baseToken']['symbol']
+                quoteTokenSymbol = res[0]['quoteTokenSymbol']
+                tokenPrice = res[0]['price']
+                console.log("Received pairs")
+            })
+            await interaction.reply(`**${baseTokenSymbol}-${quoteTokenSymbol}** on ${network}\n**${tokenPrice}**USD\n`)
+        }
+        catch (err) {
+            await interaction.reply(`No tokens found! Either try again, or change your search.\n\`\`${err}\`\``)
+        }
     },
 };

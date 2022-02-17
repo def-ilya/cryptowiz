@@ -12,7 +12,7 @@ module.exports = {
 
     async execute(interaction) {
 
-        let id = interaction.options.getString('id');
+        const id = interaction.options.getString('id');
         const token = new Token("btc")
 
         function priceLoop() {
@@ -54,8 +54,6 @@ module.exports = {
         catch (err) {
             console.log(err);
             await interaction.reply('Failed to get pairs: ' + err);
-
         }
-
     },
 };
