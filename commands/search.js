@@ -58,7 +58,7 @@ module.exports = {
             }
         }
 
-
+        if (messageBody === "**Results:** \n\n") messageBody = "**No results found.**"
 
         await interaction.reply(messageBody)
 

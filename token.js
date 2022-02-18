@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { each } = require('cheerio/lib/api/traversing');
 
-const gecko = require('coingecko-api')
+const gecko = require('coingecko-api');
 const geckoClient = new gecko();
 
 
