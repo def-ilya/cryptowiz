@@ -22,10 +22,10 @@ module.exports = {
                 tokenAddress = res[0]['baseToken']['address']
                 baseTokenSymbol = res[0]['baseToken']['symbol']
                 quoteTokenSymbol = res[0]['quoteTokenSymbol']
-                tokenPrice = res[0]['price']
+                tokenPrice = res[0]['priceUsd']
                 console.log("Received pairs")
             })
-            await interaction.reply(`**${baseTokenSymbol}-${quoteTokenSymbol}** on ${network}\n**${tokenPrice}**USD\n`)
+            await interaction.reply(`**${baseTokenSymbol}-${quoteTokenSymbol}** on ${network}\n**${tokenPrice}** USD\n`)
         }
         catch (err) {
             await interaction.reply(`No tokens found! Either try again, or change your search.\n\`\`${err}\`\``)
