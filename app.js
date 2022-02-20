@@ -32,10 +32,11 @@ Based.getDataById("based-finance").then(res => {
     Based.currentPrice().then(res => { console.log(res) });
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
 
     console.log("Connected as " + client.user.tag);
     client.user.setActivity("Track coins with /setstatus");
+
 
 
     // List servers the bot is connected to
@@ -48,8 +49,6 @@ client.on('ready', () => {
     //         console.log(` -- ${channel.name} (${channel.type}) - ${channel.id}`)
     //     })
 
-    //     const generalChannel = client.channels.cache.get("942315538682634280");
-    // })
 })
 
 
