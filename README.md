@@ -7,17 +7,18 @@ As per the admin's wishes, it has been made available for use to the public doma
 Better commenting and a refactor is on the books. 
 
 COMMANDS LIST
+Github killed formatting. Sad.
 
- * Gets the price of a given token pair. 
-@param id - A search query - This is plugged into DexScreener and scraped for the best match.
+ * Gets the price of a given token pair. \n
+@param id - A search query - This is plugged into DexScreener and scraped for the best match. \n
 
 /getprice id:query
 
- * Sets a price alert when a given token pair exceeds a price. 
-@param id - Query to pass into Dex. This will return the first token pair from a list, and track that. A quote token may be specified.
-@param price - The threshold price for the token to exceed. The command automatically determines relativity to the current price. 
-@note Polling is done at a 5s interval for every time the command is used. This opens the bot up to spam. The bot does not currently track a maximum number of price alerts or permissions. The loop is automatically killed once the price alert is triggered however. 
-@todo Implement file IO to "store" the bot's price alerts between launches.  Currently it is just storing in memory. Multiple contact points - Ie, txt messages/Telegram?
+ * Sets a price alert when a given token pair exceeds a price. \n
+@param id - Query to pass into Dex. This will return the first token pair from a list, and track that. A quote token may be specified. \n
+@param price - The threshold price for the token to exceed. The command automatically determines relativity to the current price. \n
+@note Polling is done at a 5s interval for every time the command is used. This opens the bot up to spam. The bot does not currently track a maximum number of price alerts or permissions. The loop is automatically killed once the price alert is triggered however. \n
+@todo Implement file IO to "store" the bot's price alerts between launches.  Currently it is just storing in memory. Multiple contact points - Ie, txt messages/Telegram? \n
 
 /pricealert id:query price:price
 
