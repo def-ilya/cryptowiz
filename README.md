@@ -10,6 +10,7 @@ COMMANDS LIST
 
  * Gets the price of a given token pair. 
 @param id - A search query - This is plugged into DexScreener and scraped for the best match.
+
 /getprice id:query
 
  * Sets a price alert when a given token pair exceeds a price. 
