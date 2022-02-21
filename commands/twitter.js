@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const fs = require('fs');
+const client = require('../client')
 
 const axios = require('axios');
 const OAuth = require('oauth');
@@ -50,9 +51,8 @@ module.exports = {
                                     lastTweet = res['data']['data'][0]
 
                                     if (lastTweet['id'] != sentTweet) {
-
-                                        console.log("lastTweet ID is " + lastTweet['id'])
-                                        console.log(lastTweet['text']);
+                                        console.log(lastTweet)
+                                        client.channels.cache.get(channelId).send(lastTweet['text'])
                                         sentTweet = lastTweet['id'];
                                     }
                                 }
@@ -101,9 +101,7 @@ module.exports = {
         });
 
 
-        let loop = setInterval(() => {
 
-        }, 5000)
         await interaction.reply(channelId);
     },
 };
