@@ -100,6 +100,8 @@ module.exports = {
                 }
             });
 
+            //this will give us the most update version of feeds.json. currently not in use.
+
             feeds = JSON.parse(fs.readFileSync(path));
 
         }
