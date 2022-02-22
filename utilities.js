@@ -1,8 +1,8 @@
 const axios = require('axios')
 
 const client = require('./client')
+const { MessageEmbed } = require('discord.js')
 const { TWITTER_CONSUMER, TWITTER_BEARER, TWITTER_SECRET } = require('./config.json')
-
 
 
 
@@ -24,22 +24,26 @@ const twitterChannelLoop = async function (handle = "def_ilya", channel) {
                 let sentTweet = null;
 
                 let loop = setInterval(async () => {
-
                     await axios.get(`https://api.twitter.com/2/users/${_id}/tweets?tweet.fields=created_at&expansions=author_id&user.fields=created_at&max_results=5`, {
                         headers: {
                             Authorization: `Bearer ${TWITTER_BEARER}`
                         }
                     })
                         .then((res) => {
-
+                            console.log(res)
                             try {
                                 lastTweet = res['data']['data'][0]
 
                                 if (lastTweet['id'] != sentTweet) {
 
-                                    //if the user has a tweet that isn't the same as the last one, send it to feed[c] 
-                                    console.log(lastTweet)
-                                    client.channels.cache.get(channel).send(`**@${handle}** has tweeted:\n \n${lastTweet['text']}`)
+                                    const embed = new MessageEmbed()
+                                        .setColor('#0099ff')
+                                        .setTitle('@' + handle)
+                                        .setURL('https://twitter.com/' + handle + "/status/" + lastTweet['id'])
+                                        .setDescription(lastTweet['text'])
+                                        .setTimestamp();
+
+                                    client.channels.cache.get(channel).send({ embeds: [embed] })
                                     sentTweet = lastTweet['id'];
                                 }
                             }
@@ -48,7 +52,7 @@ const twitterChannelLoop = async function (handle = "def_ilya", channel) {
                             }
                         })
 
-                }, 5000)
+                }, 10000)
 
                 return loop;
             }
