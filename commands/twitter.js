@@ -19,7 +19,8 @@ module.exports = {
 
     async execute(interaction) {
 
-        const handle = interaction.options.getString('handle').toLowerCase();
+        const handle = interaction.options.getString('handle').toLowerCase().replace('@', '');
+
         const arg = interaction.options.getString('arg');
 
         const channelId = interaction.channel.id;

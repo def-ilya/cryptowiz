@@ -54,9 +54,7 @@ module.exports = {
                 .setTitle(wallet)
                 .setURL('https://debank.com/profile/' + wallet)
                 .setDescription("This wallet is worth " + balance + " USD")
-
                 .addFields(protocols)
-
                 .setTimestamp();
 
 
