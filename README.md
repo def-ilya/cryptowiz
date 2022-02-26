@@ -10,16 +10,16 @@ Github killed formatting. Sad.
 
 /getprice id:query  
 
- * Gets the price of a given token pair. \n  
-@param id - A search query - This is plugged into DexScreener and scraped for the best match. \n  
+ * Gets the price of a given token pair.   
+@param id - A search query - This is plugged into DexScreener and scraped for the best match.   
 
 /pricealert id:query price:price  
 
- * Sets a price alert when a given token pair exceeds a price. \n  
-@param id - Query to pass into Dex. This will return the first token pair from a list, and track that. A quote token may be specified. \n  
-@param price - The threshold price for the token to exceed. The command automatically determines relativity to the current price. \n  
-@note Polling is done at a 5s interval for every time the command is used. This opens the bot up to spam. The bot does not currently track a maximum number of price alerts or permissions. The loop is automatically killed once the price alert is triggered however. \n  
-@todo Implement file IO to "store" the bot's price alerts between launches.  Currently it is just storing in memory. Multiple contact points - Ie, txt messages/Telegram? \n  
+ * Sets a price alert when a given token pair exceeds a price.   
+@param id - Query to pass into Dex. This will return the first token pair from a list, and track that. A quote token may be specified.   
+@param price - The threshold price for the token to exceed. The command automatically determines relativity to the current price.   
+@note Polling is done at a 5s interval for every time the command is used. This opens the bot up to spam. The bot does not currently track a maximum number of price alerts or permissions. The loop is automatically killed once the price alert is triggered however.   
+@todo Implement file IO to "store" the bot's price alerts between launches.  Currently it is just storing in memory. Multiple contact points - Ie, txt messages/Telegram?   
 
 /search phrase:phrase type:type  
 
@@ -40,4 +40,15 @@ Github killed formatting. Sad.
 @param id - The "ID" of a token to pass into CoinGecko. This does not do fuzziness, as the bot currently plugs the ID directly into CoinGecko's API, formats the data, and spits it out. Just the name, symbol, or part of the ID will currently not work. The /search command is intended to ease use of this command. To be depreciated. 
 @todo Fuzziness and Dexscreener/Contract implementation - Puts search query into DexScreener, outputs base token's contract & network, then uses that with CoinGecko. However, this will not work with lower mcap coins - Better solution will need research. Potentially using info from contract's compiled code to mark it as a fork off xyz?  
 
+/twitter handle:handle arg:arg
 
+ * Generates a Twitter feed for a given handle.  
+@param handle - A Twitter user's handle - This is checked against the internal feeds.json file, and a feed is either generated or removed accordingly. 
+@param arg - For development use. \
+
+/chart id:id interval:interval type:type
+
+ * Outputs a trading chart for a pair. 
+@param id - A trading pair from TradingView.
+@param interval - The interval to display.
+@param type - Advanced/simple chart type. 
