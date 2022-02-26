@@ -44,11 +44,11 @@ Github killed formatting. Sad.
 
  * Generates a Twitter feed for a given handle.  
 @param handle - A Twitter user's handle - This is checked against the internal feeds.json file, and a feed is either generated or removed accordingly. 
-@param arg - For development use. \
+@param arg - For development use.  
 
-/chart id:id interval:interval type:type
+/chart id:id interval:interval type:type  
 
- * Outputs a trading chart for a pair. 
-@param id - A trading pair from TradingView.
-@param interval - The interval to display.
-@param type - Advanced/simple chart type. 
+ * Outputs a trading chart for a pair.   
+@param id - A trading pair from TradingView.  
+@param interval - The interval to display.  
+@param type - Advanced/simple chart type.   
