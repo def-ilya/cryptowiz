@@ -25,6 +25,7 @@ const twitterChannelLoop = async function (handle = "def_ilya", channel) {
                     let sentTweet = null;
 
                     let loop = setInterval(async () => {
+
                         await axios.get(`https://api.twitter.com/2/users/${_id}/tweets?tweet.fields=created_at&expansions=author_id&user.fields=created_at&max_results=5`, {
                             headers: {
                                 Authorization: `Bearer ${TWITTER_BEARER}`
@@ -51,6 +52,9 @@ const twitterChannelLoop = async function (handle = "def_ilya", channel) {
                                 catch {
                                     console.log("no tweets found.")
                                 }
+                            })
+                            .catch(() => {
+                                console.log("skipping loop")
                             })
 
                     }, 10000)

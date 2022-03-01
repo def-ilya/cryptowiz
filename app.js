@@ -24,6 +24,7 @@ const commands = [{
 
 
 const Based = new Token("based-finance");
+
 Based.getDataById("based-finance").then(res => {
     console.log(Based.ticker);
     console.log(Based.name);

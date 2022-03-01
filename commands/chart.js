@@ -41,6 +41,7 @@ module.exports = {
         let interval = interaction.options.getString('interval');
         let type = interaction.options.getString('type');
 
+        //setting defaults
         if (interval == null) { interval = "1M" }
         if (type == null) { type = "mini-chart" }
 
