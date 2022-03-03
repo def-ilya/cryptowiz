@@ -75,7 +75,7 @@ module.exports = {
             await interaction.editReply({ embeds: [embed], files: [file] });
         }
         catch {
-            await interaction.reply("Something went wrong... Try again later.")
+            await interaction.editReply("Something went wrong.");
         }
     },
 };

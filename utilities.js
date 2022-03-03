@@ -7,7 +7,6 @@ const { TWITTER_CONSUMER, TWITTER_BEARER, TWITTER_SECRET } = require('./config.j
 
 
 const twitterChannelLoop = async function (handle = "def_ilya", channel) {
-
     try {
         await axios.get(`https://api.twitter.com/2/users/by?usernames=${handle}`, {
             headers: {
